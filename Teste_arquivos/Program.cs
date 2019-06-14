@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using Entities;
 
@@ -10,6 +11,7 @@ namespace Teste_arquivos
         {
             string inPath = @"c:\temp\sales";
             string outPath = inPath + @"\out";
+            Sale sale = new Sale();
 
             try
             {
@@ -21,11 +23,11 @@ namespace Teste_arquivos
                     while (!sr.EndOfStream)
                     {
                         string[] product = sr.ReadLine().Split(",");
-                        Console.WriteLine("\nProduct:");
-                        Console.WriteLine("Name: " + product[0]);
-                        Console.WriteLine("Price: " + product[1]);
-                        Console.WriteLine("Quantity: " + product[2]);
+                        ProductSale currentSale = new ProductSale(new Product(product[0], double.Parse(product[1], CultureInfo.InvariantCulture)), int.Parse(product[2]));
+                        sale.addSale(currentSale);
                     }
+
+                    sale.printSummary();
                 }
 
                 using (StreamWriter sw = new StreamWriter(outPath+ @"\summary.csv"))
