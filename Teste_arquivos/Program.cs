@@ -26,15 +26,16 @@ namespace Teste_arquivos
                         ProductSale currentSale = new ProductSale(new Product(product[0], double.Parse(product[1], CultureInfo.InvariantCulture)), int.Parse(product[2]));
                         sale.addSale(currentSale);
                     }
-
-                    sale.printSummary();
                 }
 
                 using (StreamWriter sw = new StreamWriter(outPath+ @"\summary.csv"))
                 {
-                    // Salvar summary no arquivo "\out\summary.csv"
+                    foreach(string s in sale.generateSummary())
+                    {
+                        sw.WriteLine(s);
+                    }
                 }
-
+                Console.WriteLine("Summary.csv generated successfully at " + outPath + ".");
             }
             catch (IOException e)
             {
@@ -44,7 +45,6 @@ namespace Teste_arquivos
             {
                 Console.WriteLine("An error occurred: " + e.Message);
             }
-
             Console.ReadLine();
         }
  
