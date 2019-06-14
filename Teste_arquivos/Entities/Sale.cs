@@ -29,9 +29,9 @@ namespace Entities
             summary.Add("SUMMARY:");
             foreach (ProductSale p in sales)
             {
-                summary.Add(p.product.name + ", $" + p.totalValue());
+                summary.Add(p.product.name + ", $" + p.totalValue().ToString("F2"));
             }
-            summary.Add("Total value: $" + totalValue);
+            summary.Add("Total value: $" + totalValue.ToString("F2"));
             return summary;
         }
 
