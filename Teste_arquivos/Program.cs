@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Entities;
 
 namespace Teste_arquivos
 {
@@ -6,7 +8,8 @@ namespace Teste_arquivos
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
+ 
     }
 }
