@@ -27,9 +27,8 @@ namespace Entities
         {
             List<string> summary = new List<string>();
             summary.Add("SUMMARY:");
-            foreach (ProductSale p in sales)
-            {
-                summary.Add(p.product.name + ", $" + p.totalValue().ToString("F2"));
+            foreach (ProductSale prod in sales){
+                summary.Add(prod.product.name + ", $" + prod.totalValue().ToString("F2"));
             }
             summary.Add("Total value: $" + totalValue.ToString("F2"));
             return summary;
@@ -37,9 +36,8 @@ namespace Entities
 
         public void printSummary()
         {
-            foreach (string s in generateSummary())
-            {
-                Console.WriteLine(s);
+            foreach (string saleString in generateSummary()){
+                Console.WriteLine(saleString);
             }
         }
     }
